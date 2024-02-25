@@ -13,8 +13,7 @@ const defaultContacts = [
 ];
 
 const contactsState =
-  !localStorage.getItem('contacts') ||
-  JSON.parse(localStorage.getItem('contacts')).length > 0
+  localStorage.getItem('contacts') !== null
     ? JSON.parse(localStorage.getItem('contacts'))
     : defaultContacts;
 
