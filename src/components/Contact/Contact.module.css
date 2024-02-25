@@ -1,0 +1,19 @@
+.contact {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btn {
+  height: fit-content;
+  padding: 4px;
+}
