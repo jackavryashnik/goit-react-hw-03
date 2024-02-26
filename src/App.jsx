@@ -30,9 +30,13 @@ function App() {
 
   const handleDeleteContact = e => {
     setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.name !== e.target.name)
+      prevContacts.filter(contact => contact.id !== e.target.id)
     );
   };
+
+  const filtredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -42,13 +46,12 @@ function App() {
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
-      <SearchBox filter={filter} onSearch={setFilter} />
-      <ContactList
-        contacts={contacts.filter(contact =>
-          contact.name.toLowerCase().includes(filter.toLowerCase())
-        )}
-        onDelete={handleDeleteContact}
+      <SearchBox
+        filter={filter}
+        onChange={setFilter}
+        title={'Find contacts by name'}
       />
+      <ContactList contacts={filtredContacts} onDelete={handleDeleteContact} />
     </div>
   );
 }

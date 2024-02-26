@@ -4,14 +4,14 @@ import * as Yup from 'yup';
 import 'yup-phone';
 import css from './ContactForm.module.css';
 
-const phoneRegExp = /^\d{3}-\d{2}-\d{2}$/;
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, 'Too Short!')
-    .max(50, 'Too Long!')
+    .min(3, 'Too Short! Min length 3')
+    .max(50, 'Too Long! Max length 50')
     .required('Required'),
   number: Yup.string()
-    .matches(phoneRegExp, 'Phone number is not valid')
+    .min(3, 'Too Short! Min length 3')
+    .max(50, 'Too Long! Max length 50')
     .required('Required'),
 });
 
@@ -41,7 +41,9 @@ const ContactForm = ({ onAdd }) => {
           <ErrorMessage name="number" component="span" className={css.error} />
         </div>
 
-        <button className={css.btn} type="submit">Add contact</button>
+        <button className={css.btn} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
