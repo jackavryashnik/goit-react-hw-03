@@ -28,13 +28,13 @@ function App() {
     ]);
   };
 
-  const handleDeleteContact = e => {
+  const handleDeleteContact = id => {
     setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== e.target.id)
+      prevContacts.filter(contact => contact.id !== id)
     );
   };
 
-  const filtredContacts = contacts.filter(contact =>
+  const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
@@ -46,12 +46,10 @@ function App() {
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
-      <SearchBox
-        filter={filter}
-        onChange={setFilter}
-        title={'Find contacts by name'}
-      />
-      <ContactList contacts={filtredContacts} onDelete={handleDeleteContact} />
+      <SearchBox filter={filter} onChange={setFilter}>
+        Find contacts by name
+      </SearchBox>
+      <ContactList contacts={filteredContacts} onDelete={handleDeleteContact} />
     </div>
   );
 }

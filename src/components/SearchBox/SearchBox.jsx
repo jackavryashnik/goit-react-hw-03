@@ -1,12 +1,12 @@
 import { useId } from 'react';
 import css from './SearchBox.module.css';
 
-const SearchBox = ({ title, filter, onChange }) => {
+const SearchBox = ({ filter, onChange, children }) => {
   const searchFieldId = useId();
 
   return (
     <div className={css.searchWrapper}>
-      <label htmlFor={searchFieldId}>{title}</label>
+      <label htmlFor={searchFieldId}>{children}</label>
       <input
         className={css.search}
         id={searchFieldId}
